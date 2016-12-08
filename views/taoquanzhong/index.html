@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" charset="utf-8">
+    <!--在iPhone上手机号不默认显示为拨号连接-->
+    <meta name="format-detection" content="telephone=no">
+    <title>淘权重 - 权重查询</title>
+    <% include ../inc/header.html %>
+    <link rel="stylesheet" type="text/css" href="/css/taoquanzhong/index.css"/>
+</head>
+<body>
+<% include header.html %>
+<article class="row clearfix head-article">
+    <% include sider.html %>
+    <main class="col-md-4 col-md-offset-4">
+        <form class="navbar-form navbar-left" role="search" id="form_search">
+            <div class="form-group">
+                <input type="text" class="form-control" style="border-color: #72c9d1" id="put_search" name="account" value="" placeholder="请输入旺旺号"/>
+            </div>
+            <input name="api_key" type="hidden" value="30f387b84ebaadf8efe518e00f1583a6">
+            <input id="action_type" type="hidden" value="weight">
+            <button type="submit" class="btn btn-default" id="btn_search"><span class="glyphicon">淘一下</span></button>
+        </form>
+    </main>
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+            <div id="table_list">
+            </div>
+		</div>
+	</div>
+</div>
+</article>
+
+<% include ../inc/footer.html %>
+<script src="/js/taoquanzhong/index.js" type="text/javascript" charset="utf-8"></script>
+
+<!--渲染表单-->
+<script id="tpl_list" type="text/template">
+    <table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                类目
+            </th>
+            <th>
+                权重分（满分100）
+            </th>
+            <th>
+                区间价位 / 元
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ each list }}
+        <tr>
+            <td>
+                {{ $value.name }}
+            </td>
+            <td>
+                {{ $value.score }}
+            </td>
+            <td>
+                {{ $value.price }}
+            </td>
+        </tr>
+        {{ /each }}
+    </tbody>
+    </table>
+</script>
+</body>
+</html>

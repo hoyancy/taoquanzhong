@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" charset="utf-8">
+    <!--在iPhone上手机号不默认显示为拨号连接-->
+    <meta name="format-detection" content="telephone=no">
+    <title>淘权重 - 权重查询</title>
+    <% include ../inc/header.html %>
+    <link rel="stylesheet" type="text/css" href="/css/taoquanzhong/index.css"/>
+</head>
+<body>
+<% include header.html %>
+<article class="row clearfix head-article">
+    <% include sider.html %>
+    <main class="col-md-4 col-md-offset-4">
+        <form class="navbar-form navbar-left" role="search" id="form_search">
+            <div class="form-group">
+                <input type="text" class="form-control" style="border-color: #72c9d1" id="put_search" name="account" value="" placeholder="请输入旺旺号"/>
+            </div>
+            <input name="api_key" type="hidden" value="30f387b84ebaadf8efe518e00f1583a6">
+            <input id="action_type" type="hidden" value="like">
+            <button type="submit" class="btn btn-default" id="btn_search"><span class="glyphicon">淘一下</span></button>
+        </form>
+    </main>
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div id="table_list"></div>
+		</div>
+	</div>
+</div>
+</article>
+
+<% include ../inc/footer.html %>
+<script src="/js/taoquanzhong/index.js" type="text/javascript" charset="utf-8"></script>
+
+<!--渲染表单-->
+<script id="tpl_list" type="text/template">
+    <p id="msg" class="text-center">共找到 {{list.length}} 个宝贝</p>
+    {{ each list }}
+    <div class="col-md-6 col-sm-6 col-lg-3">
+        <a class="thumbnail" href="http://item.taobao.com/item.htm?id={{ $value.id }}" target="_blank"><img src={{ $value.pic }} alt="">
+        <div class="caption">
+            <h3>{{ $value.title }}</h3>
+            <span class="label label-success">￥ {{ $value.price }}</span>
+            <div class="pull-right">
+                <span class="label label-info">销量： {{ $value.sale }}</span>
+            </div>
+        </div>
+        </a>
+    </div>
+    {{ /each }}
+</script>
+</body>
+</html>
