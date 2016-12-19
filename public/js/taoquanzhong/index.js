@@ -11,6 +11,12 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 main.query();
                 return false;
             });
+
+            // 打开QQ聊天
+            $('.qq_chat').click(function(){
+                var qq_src = 'http://wpa.qq.com/msgrd?v=3&uin=517221264&site=qq&menu=yes';
+                $('.qq_iframe').attr('src', qq_src);
+            });
         },
         query: function(page){
             //获取params

@@ -7,8 +7,20 @@
         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                     <a href="#" style="color: #72c9d1">点击登录！</a>
+                    <a class="qq_chat" href="javascript:;" style="color: #72c9d1">
+                        <img src="/img/qq.png" height="25">&nbsp;联系我们
+                    </a>
+                    <iframe style="display:none;" class="qq_iframe" src=""></iframe>
                 </li>
+                <% if(!user){ %>
+                <li>
+                     <a href="/user/login.html" style="color: #72c9d1">点击登录！</a>
+                </li>
+                <% }else{ %>
+                <li>
+                     <a href="/user/logout" style="color: #72c9d1"><%= user[0].account%>, 退出登录</a>
+                </li>
+                <% } %>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">

@@ -49,6 +49,10 @@ body {
     border-top: 2px solid #72C9D1;
 }
 
+.navbar-bottom {
+    background-color: rgba(248, 248, 248, 0.88);
+}
+
 .glyphicon{
     color: #72C9D1;
 }

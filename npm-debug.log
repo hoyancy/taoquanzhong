@@ -5,16 +5,16 @@
 2 info using npm@3.3.12
 3 info using node@v5.1.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info lifecycle vamong@0.0.0~prestart: vamong@0.0.0
-6 silly lifecycle vamong@0.0.0~prestart: no script for prestart, continuing
-7 info lifecycle vamong@0.0.0~start: vamong@0.0.0
-8 verbose lifecycle vamong@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle vamong@0.0.0~start: PATH: E:\Install\Nodejs\node_modules\npm\bin\node-gyp-bin;D:\Github\taoquanzhong\node_modules\.bin;C:\Users\Yancy'\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Yancy'\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;E:\Install\Nodejs;C:\Users\Yancy'\AppData\Roaming\npm;E:\Install\Microsoft VS Code\bin;C:\Users\Yancy'\AppData\Local\atom\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
-10 verbose lifecycle vamong@0.0.0~start: CWD: D:\Github\taoquanzhong
-11 silly lifecycle vamong@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
-12 silly lifecycle vamong@0.0.0~start: Returned: code: 1  signal: null
-13 info lifecycle vamong@0.0.0~start: Failed to exec start script
-14 verbose stack Error: vamong@0.0.0 start: `node ./bin/www`
+5 info lifecycle taoquanzhong@0.0.0~prestart: taoquanzhong@0.0.0
+6 silly lifecycle taoquanzhong@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle taoquanzhong@0.0.0~start: taoquanzhong@0.0.0
+8 verbose lifecycle taoquanzhong@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle taoquanzhong@0.0.0~start: PATH: E:\Install\Nodejs\node_modules\npm\bin\node-gyp-bin;D:\Github\taoquanzhong\node_modules\.bin;C:\Users\Yancy'\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Yancy'\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;E:\Install\Nodejs;C:\Program Files\MySQL\MySQL Utilities 1.6;C:\Users\Yancy'\AppData\Roaming\npm;E:\Install\Microsoft VS Code\bin;C:\Users\Yancy'\AppData\Local\atom\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+10 verbose lifecycle taoquanzhong@0.0.0~start: CWD: D:\Github\taoquanzhong
+11 silly lifecycle taoquanzhong@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+12 silly lifecycle taoquanzhong@0.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle taoquanzhong@0.0.0~start: Failed to exec start script
+14 verbose stack Error: taoquanzhong@0.0.0 start: `node ./bin/www`
 14 verbose stack Exit status 1
 14 verbose stack     at EventEmitter.<anonymous> (E:\Install\Nodejs\node_modules\npm\lib\utils\lifecycle.js:232:16)
 14 verbose stack     at emitTwo (events.js:87:13)
@@ -24,22 +24,22 @@
 14 verbose stack     at ChildProcess.emit (events.js:172:7)
 14 verbose stack     at maybeClose (internal/child_process.js:818:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-15 verbose pkgid vamong@0.0.0
+15 verbose pkgid taoquanzhong@0.0.0
 16 verbose cwd D:\Github\taoquanzhong
 17 error Windows_NT 6.3.9600
 18 error argv "E:\\Install\\Nodejs\\node.exe" "E:\\Install\\Nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 19 error node v5.1.0
 20 error npm  v3.3.12
 21 error code ELIFECYCLE
-22 error vamong@0.0.0 start: `node ./bin/www`
+22 error taoquanzhong@0.0.0 start: `node ./bin/www`
 22 error Exit status 1
-23 error Failed at the vamong@0.0.0 start script 'node ./bin/www'.
+23 error Failed at the taoquanzhong@0.0.0 start script 'node ./bin/www'.
 23 error Make sure you have the latest version of node.js and npm installed.
-23 error If you do, this is most likely a problem with the vamong package,
+23 error If you do, this is most likely a problem with the taoquanzhong package,
 23 error not with npm itself.
 23 error Tell the author that this fails on your system:
 23 error     node ./bin/www
 23 error You can get their info via:
-23 error     npm owner ls vamong
+23 error     npm owner ls taoquanzhong
 23 error There is likely additional logging output above.
 24 verbose exit [ 1, true ]

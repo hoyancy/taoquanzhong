@@ -1,9 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" charset="utf-8">
+    <!--在iPhone上手机号不默认显示为拨号连接-->
+    <meta name="format-detection" content="telephone=no">
+    <title>淘权重 - 用户注册</title>
+    <% include ../inc/header.html %>
 </head>
 <body>
-
+注册页面
+<article class="row clearfix head-article">
+    <main class="col-md-12">
+        <form class="form-horizontal" id="form_query" role="form">
+            <div class="form-group" data-data="">
+                <label class="col-sm-offset-3 col-sm-1 control-label">用户名：</label>
+                <div class="col-sm-4">
+                <input type="text" class="form-control" style="border-color: #72c9d1" name="account" value="test" placeholder="请输入用户名"/>
+                </div>
+            </div>
+            <div class="form-group" data-data="">
+                <label class="col-sm-offset-3 col-sm-1 control-label">密码：</label>
+                <div class="col-sm-4">
+                <input type="text" class="form-control" style="border-color: #72c9d1" name="password" value="1234567" placeholder="请输入密码"/>
+                </div>
+            </div>
+            <div class="form-group" data-data="">
+                <label class="col-sm-offset-3 col-sm-1 control-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-default" id="btn_submit">确定</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</article>
+<% include ../inc/footer.html %>
+<script src="/js/user/register.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
