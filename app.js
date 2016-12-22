@@ -95,7 +95,7 @@ app.use(function (err, req, res, next) {
 });
 
 // 引用http-proxy
-var httpProxy = require('http-proxy');
-httpProxy.createProxyServer({target: 'http://localhost:7000'}).listen(80);
+// var httpProxy = require('http-proxy');
+// httpProxy.createProxyServer({target: 'http://localhost:7000'}).listen(80);
 
 module.exports = app;
