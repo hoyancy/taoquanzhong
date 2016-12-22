@@ -49,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req,res,next){ 
     // console.log(req.session.user);
     res.locals.user = req.session.user;   // 从session 获取 user对象
+    res.locals.localhost = req.headers['host'];   // 获取当前访问页面的host（域名）
     var err = req.session.error;   //获取错误信息
     delete req.session.error;
     res.locals.message = "";   // 展示的信息 message

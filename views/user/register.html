@@ -19,9 +19,9 @@
 				<input name="action" value="login" type="hidden">
 				<input type="text" class="form-control" id="account" name="account" value="" placeholder="用户名" pattern="^[a-zA-Z\d@._-]{3,16}$" title="3~16位非特殊符号组成" maxlength="16" required>
 				<hr class="hr15">
-				<input type="password" class="form-control" id="password" name="password" value="" placeholder="请输入密码" pattern="[a-zA-Z\d`~!@#$%^&*()_\-+={}\[\]\\|:;\'<>,.?\/]{6,16}" title="6~16位字符组成" maxlength="16" required>
+				<input type="password" class="form-control" id="password" name="password" value="" placeholder="请输入密码" pattern="^[a-zA-Z\d`.~!@#$%^&*()_\+={}-]{6,16}$" title="6~16位字符组成" maxlength="16" required>
 				<hr class="hr15">
-                <input type="password" class="form-control" id="password_again" name="" value="" placeholder="请再输入一遍密码" pattern="[a-zA-Z\d`~!@#$%^&*()_\-+={}\[\]\\|:;\'<>,.?\/]{6,16}" title="6~16位字符组成" maxlength="16" required>
+                <input type="password" class="form-control" id="password_again" name="" value="" placeholder="请再输入一遍密码" pattern="^[a-zA-Z\d`.~!@#$%^&*()_\+={}-]{6,16}$" title="6~16位字符组成" maxlength="16" required>
 				<hr class="hr15">
 				<input value="注册" style="width:100%;" type="submit" id="btn_submit">
 				<hr class="hr20">
