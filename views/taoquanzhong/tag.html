@@ -17,7 +17,7 @@
     <main class="col-md-12">
         <form class="navbar-form text-center" role="search" id="form_search">
             <div class="form-group">
-                <input type="text" class="form-control" style="border-color: #72c9d1" id="put_search" name="account" value="" placeholder="请输入旺旺号"/>
+                <input type="text" class="form-control" style="border-color: #72c9d1" id="put_search" name="account" value="" placeholder="请输入旺旺号" required/>
             </div>
             <input name="api_key" type="hidden" value="30f387b84ebaadf8efe518e00f1583a6">
             <input id="action_type" type="hidden" value="tag">
@@ -27,7 +27,11 @@
     <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12">
-			<div id="table_list"></div>
+			<div id="table_list">
+                <div class="text-center">
+                    <img src="/img/tag.jpg">
+                </div>
+            </div>
 		</div>
 	</div>
 </div>
@@ -41,13 +45,13 @@
 <script id="tpl_list" type="text/template">
 <form class="form-horizontal" id="formTags" role="form">
     <div class="form-group" data-data="">
-        <label class="col-sm-offset-3 col-sm-1 control-label">旺旺头像：</label>
+        <label class="col-sm-offset-2 col-sm-2 control-label">旺旺头像：</label>
         <div class="col-sm-4">
             <img src="https://wwc.alicdn.com/avatar/getAvatar.do?userNick=929392796lzy&amp;width=80&amp;height=80&amp;type=sns&amp;_input_charset=UTF-8" alt="旺旺头像" id="imgAvatar" class="img-responsive img-circle">
         </div>
     </div>
     <div class="form-group" data-data="">
-        <label class="col-sm-offset-3 col-sm-1 control-label">个性化标签：</label>
+        <label class="col-sm-offset-2 col-sm-2 control-label">个性化标签：</label>
         <div class="col-sm-4">
             <div class="list-group">
                 {{ each list }}

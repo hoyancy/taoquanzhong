@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" charset="utf-8">
+    <!--在iPhone上手机号不默认显示为拨号连接-->
+    <meta name="format-detection" content="telephone=no">
+    <title>淘权重 - 用户信息</title>
+    <% include ../inc/header.html %>
+    <!--<link rel="shortcut icon" href="/img/taoquanzhong/logo.png" />-->
+    <!--<link rel="Bookmark" href="/img/taoquanzhong/logo.png">-->
+    <link rel="stylesheet" type="text/css" href="/css/taoquanzhong/index.css"/>
+</head>
+<body>
+<article class="clearfix head-article">
+    <main class="col-md-12">
+        <form class="navbar-form text-center" role="search" id="form_query">
+            <div class="form-group">
+                <input type="text" class="form-control" style="border-color: #72c9d1" id="account" name="account" value="" placeholder="请输入用户名" required/>
+            </div>
+            <button type="submit" class="btn btn-default" id="btn_search"><span class="glyphicon">查询</span></button>
+        </form>
+    </main>
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12">
+			<div id="table_list">
+            </div>
+		</div>
+	</div>
+</div>
+</article>
+
+<% include ../inc/footer.html %>
+<script src="/js/taoquanzhong/user_info.js" type="text/javascript" charset="utf-8"></script>
+
+<!--渲染表单-->
+<script id="tpl_list" type="text/template">
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+				<label class="col-sm-6 control-label">推荐人数：</label>
+			<div class="col-sm-6">
+				<p class="form-control-static">{{ recommend_num }}</p>
+			</div>
+		</div>
+	</form>
+</script>
+</body>
+</html>

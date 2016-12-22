@@ -4,23 +4,39 @@
         <div class="">
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/">Taoquanzhong</a>
         </div>
-        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a class="qq_chat" href="javascript:;" style="color: #72c9d1">
-                        <img src="/img/qq.png" height="25">&nbsp;
-                    </a>
-                    <iframe style="display:none;" class="qq_iframe" src=""></iframe>
-                </li>
                 <% if(!user){ %>
                 <li>
-                     <a href="/user/login.html" style="color: #72c9d1">点击登录！</a>
+                     <a href="/user/login.html" style="color: #72c9d1">登录</a>
+                </li>
+                <li>
+                     <a href="/user/register.html" style="color: #72c9d1">免费注册</a>
                 </li>
                 <% }else{ %>
                 <li>
-                     <a href="/user/logout" style="color: #72c9d1"><%= user[0].account%>, 退出登录</a>
+                     <a href="/user/logout" style="color: #72c9d1">您好<%= user[0].account%>, 退出</a>
+                </li>
+                <li>
+                    <a id="modal-341520" href="#modal-container-341520" style="color: #72c9d1" role="button" class="btn" data-toggle="modal">邀请注册链接</a>
                 </li>
                 <% } %>
+                <li>
+                     <a id="modal_bind_account" href="#modal_bind_href" style="color: #72c9d1" role="button" class="btn" data-toggle="modal"><span id="bind_account">买号绑定</span></a>
+                </li>
+                <li>
+                     <a href="/taoquanzhong/shop.html" style="color: #72c9d1">购买月卡</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="qq_chat"  style="color: #72c9d1">
+                        <img src="/img/qq.png" height="20">&nbsp;客服QQ：517221264
+                    </a>
+                    <iframe style="display:none;" class="qq_iframe" src=""></iframe>
+                </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -32,3 +48,61 @@
       </div>
     </nav>
 </header>
+<% if(user){ %>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="modal fade" id="modal-container-341520" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								邀请注册链接
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>快复制以下链接发送给好朋友吧！</p>
+                            <p>http://www.taoquanzhong.com/user/register.html?referrer=21/user/register.html?referrer=<%= user[0].id%></p>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+<% } %>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="modal fade" id="modal_bind_href" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								买号绑定
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>请使用 <b>手机淘宝</b> 扫描下面的二维码</p>
+                            <img id="img_bind_account" src="">
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>

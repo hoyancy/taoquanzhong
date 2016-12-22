@@ -11,9 +11,9 @@ var session = require('express-session');
 // cors跨域资源共享
 // var cors = require('cors'); // 已卸载
 
-// 指定vamong的默认url
+// 指定该网站的的默认url
 var index = require('./routes/index');
-// 指定app.use('/debugeditor', debugeditor)下的入口js
+// 指定app.use('/taoquanzhong', taoquanzhong)下的入口js
 var taoquanzhong = require('./routes/taoquanzhong/index');
 // user
 var user = require('./routes/user/index');
@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(cors()); // 已卸载
 
 app.use(function(req,res,next){ 
-    console.log(req.session.user);
+    // console.log(req.session.user);
     res.locals.user = req.session.user;   // 从session 获取 user对象
     var err = req.session.error;   //获取错误信息
     delete req.session.error;
@@ -92,16 +92,6 @@ app.use(function (err, req, res, next) {
         message: err.message,
         error: {}
     });
-});
-
-app.post('/get_ip',function(req,res){
-console.log('333333')
-        res.json({success:1});
-});
-
-app.get('http://www.taoka123.com/api/taoka_weight?account=929392796lzy&api_key=30f387b84ebaadf8efe518e00f1583a6', function(req, res, next){
-  console.log(7777777777777);
-  console.log(res.json());
 });
 
 // 引用http-proxy

@@ -17,6 +17,11 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 var qq_src = 'http://wpa.qq.com/msgrd?v=3&uin=517221264&site=qq&menu=yes';
                 $('.qq_iframe').attr('src', qq_src);
             });
+
+            $('#bind_account').click(function(){
+                main.getBindQrcode();
+            });
+
         },
         query: function(page){
             //获取params
@@ -26,16 +31,16 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
             var url = '';
             switch(action_type){
                 case 'weight':
-                    var url = 'http://www.taoka123.com:81/api/taoka_weight?' + params;
+                    var url = 'http://www.taoka123.com/api/taoka_weight?' + params;
                     break;
                 case 'need':
-                    var url = 'http://www.taoka123.com:81/api/taoka_need?' + params;
+                    var url = 'http://www.taoka123.com/api/taoka_need?' + params;
                     break;
                 case 'like':
-                    var url = 'http://www.taoka123.com:81/api/like?' + params;
+                    var url = 'http://www.taoka123.com/api/like?' + params;
                     break;
                 case 'tag':
-                    var url = 'http://www.taoka123.com:81/api/tags?' + params;
+                    var url = 'http://www.taoka123.com/api/tags?' + params;
                     break;
             }
             console.log(params);
@@ -53,7 +58,30 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                     console.log(data.result);
                 },
                 error: function () {
-                    alert('请求有误');
+                    alert('taoka_weight请求有误');
+                }
+            });
+        },
+        getBindQrcode: function(){
+            var params = {};
+            params['url'] = 'http://www.taoka123.com/index/get_bind_qrcode.html';
+
+            $.ajax({
+                type: 'get',
+                contentType: 'application/json',
+                url: '/taoquanzhong/get_bind_qrcode.json',
+                // async: false, //选择同步，不然还没请求完就回填了
+                dataType: 'json',
+                data: params,
+                success: function (res) {
+                    if(res.status === 0){
+                        $('#img_bind_account').attr('src', res.url)
+                    }else{
+                        alert('getBindQrcode error')
+                    }
+                },
+                error: function () {
+                    alert('get_bind_qrcode请求有误');
                 }
             });
         }

@@ -6,10 +6,27 @@
     <meta name="format-detection" content="telephone=no">
     <title>淘权重 - 用户登录</title>
     <% include ../inc/header.html %>
+	<link rel="stylesheet" type="text/css" href="/css/taoquanzhong/login.css"/>
 </head>
 <body>
 	<div class="container">
-		<form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" id="form_login">
+		<div class="login">
+			<div class="message">查权重-用户登录</div>
+			<div id="darkbannerwrap"></div>
+			
+			<form role="form" id="form_login">
+				<input name="action" value="login" type="hidden">
+				<input type="text" class="form-control" id="account" name="account" value="" placeholder="用户名" pattern="^[a-zA-Z\d@._-]{3,16}$" title="3~16位非特殊符号组成" maxlength="16" required>
+				<hr class="hr15">
+				<input type="password" class="form-control" id="password" name="password" value="" placeholder="请输入密码" pattern="[a-zA-Z\d`~!@#$%^&*()_\-+={}\[\]\\|:;\'<>,.?\/]{6,16}" title="6~16位字符组成" maxlength="16" required>
+				<hr class="hr15">
+				<input value="登录" style="width:100%;" type="submit">
+				<hr class="hr20">
+				帮助 <a href="javascript:;" id="btn_register">注册</a>
+				<!--帮助 <a onClick="alert('请联系管理员')">忘记密码</a> -->
+			</form>
+		</div>
+		<!--<form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" id="form_login">
 			<fieldset>
 				<legend></legend>
 				<div class="panel panel-default">
@@ -42,7 +59,7 @@
 				</div>
 				</div>
 			</fieldset>
-		</form>
+		</form>-->
 	</div>
     <% include ../inc/footer.html %>
     <script src="/js/user/login.js" type="text/javascript" charset="utf-8"></script>     

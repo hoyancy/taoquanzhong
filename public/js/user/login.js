@@ -1,4 +1,4 @@
-seajs.use(["/config/debugeditor/modules/md5/1.0.0/md5"], function(md5){
+seajs.use(["/config/debugeditor/modules/md5/1.0.0/md5"], function(Md5){
     var main = {
         init: function() {
             this.bind();
@@ -15,9 +15,9 @@ seajs.use(["/config/debugeditor/modules/md5/1.0.0/md5"], function(md5){
         },
         query: function(page){
             //获取params
-            var params = $('#form_login').serialize();
+            var params = $('#form_login').serializeObject();
 
-            console.log(params);
+            params['password'] = Md5(params['password']);
 
             $.ajax({
                 type: 'get',
@@ -26,8 +26,12 @@ seajs.use(["/config/debugeditor/modules/md5/1.0.0/md5"], function(md5){
                 // async: false, //选择同步，不然还没请求完就回填了
                 dataType: 'json',
                 data: params,
-                success: function (refererUrl) { 
-                    location.href = refererUrl;
+                success: function (res) {
+                    if(res.code === 200){
+                        location.href = res.referer;
+                    }else{
+                        alert(res.code + ', ' + res.msg);
+                    }
                 },
                 error: function () {
                     alert('error login!');
@@ -39,3 +43,18 @@ seajs.use(["/config/debugeditor/modules/md5/1.0.0/md5"], function(md5){
 
     main.init();
 });
+
+// 序列化表单
+jQuery.prototype.serializeObject = function(){  
+    var a, o, h, i, e;  
+    a = this.serializeArray();  
+    o = {};  
+    h = o.hasOwnProperty;  
+    for(i = 0; i<a.length; i++){  
+        e = a[i];  
+        if(!h.call(o,e.name)){  
+            o[e.name]=e.value;  
+        }  
+    }  
+    return o;  
+};  

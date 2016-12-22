@@ -1,12 +1,18 @@
 var express = require('express');
 var request = require('request');
-var rp = require('request-promise'); // request第三方接口时，使用promise
+var rp = require('request-promise'); // request第三方接口时，使用request的promise
 var querystring = require('querystring'); // 序列化req.query
+
+// 登录所需要的session
+var session = require('express-session');
+
+var userDao = require('../../dao/userDao');
+
 var router = express.Router();
 
 /* GET home page. */
 router.get('/index.html', function(req, res, next) {
-    res.render('taoquanzhong/index.html', { type: 'index' });
+    res.render('taoquanzhong/index.html', { type: 'index'});
 });
 
 // 淘需求
@@ -24,6 +30,20 @@ router.get('/tag.html', function(req, res, next) {
     res.render('taoquanzhong/tag.html', {type: 'tag'});
 });
 
+/* 用户信息页面 */
+router.get("/user_info.html",function(req,res,next){
+    res.render('taoquanzhong/user_info.html');
+});
+
+/* GET buy page. */
+router.get("/shop.html",function(req,res,next){
+    res.render('taoquanzhong/shop.html');
+});
+
+/* GET recommendNumOfPeople. */
+router.get("/recommend_num.json",function(req,res,next){    // ajax获取推荐人数
+	userDao.recommendNumOfPeople(req, res, next);
+});
 
 // 查权重
 router.get('/taoka_weight.json', function (req, res, next) {
@@ -38,7 +58,7 @@ router.get('/taoka_weight.json', function (req, res, next) {
         res.json(taoka_data);
     })
     .catch(function (err) {
-        console.log('error-yancy')
+        console.log('error-taoka_weight')
     });
 
 
@@ -109,6 +129,21 @@ router.get('/taoka_weight.json', function (req, res, next) {
 
     // 模拟返回数据
     // res.json(taoka_data); // 直接返回json格式数据
+});
+
+// 买号绑定
+router.get('/get_bind_qrcode.json', function (req, res, next) {
+    // promise调用第三方接口查数据
+    var taoka_data = {};
+
+    rp(req.query.url)
+    .then(function (htmlString) {
+        taoka_data = JSON.parse(htmlString); // JSON.parse将字符串序列化为object，JSON.stringify(obj)将对象转为js字符串
+        res.json(taoka_data);
+    })
+    .catch(function (err) {
+        console.log('error-get_bind_qrcode')
+    });
 });
 
 // app.get('/products/:id', function(req, res, next){

@@ -1,10 +1,11 @@
 // CRUD SQL语句
 var user = {
-    insert: 'insert into user(account, password) values(?,?)',
+    insert: 'insert into user(account, password, referrer) values(?,?,?)',
     update: 'update user set account=?, password=?',
     delete: 'delete from user where account=?',
     queryByAccount: 'select * from user where account=?',
-    queryAll: 'select * from user'
+    queryAll: 'select * from user',
+    recommendNumOfPeople: 'select count(*) as recommendNum from user where referrer = ?'
 };
 
 module.exports = user;
