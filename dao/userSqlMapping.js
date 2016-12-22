@@ -5,7 +5,7 @@ var user = {
     delete: 'delete from user where account=?',
     queryByAccount: 'select * from user where account=?',
     queryAll: 'select * from user',
-    recommendNumOfPeople: 'select count(*) as recommendNum from user where referrer = ?'
+    recommendNumOfPeople: 'select count(*) as recommendNum from user where referrer = (select id from user where account = ?);'
 };
 
 module.exports = user;
