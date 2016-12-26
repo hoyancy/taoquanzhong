@@ -10,6 +10,17 @@ var userDao = require('../../dao/userDao');
 
 var router = express.Router();
 
+// 检查用户是否登录中间件，所有需要登录权限的页面都使用此中间件
+// function checkLogin (req, res, next) {
+//   if (req.session.user) {
+//     next();//检验到用户已登入，转移权限阁下一个路由
+//   } else {
+//     res.redirect('/user/login.html');//否则，页面重定位，不执行下面路由
+//   }
+// } 
+// checkLogin();
+
+// checkLogin
 /* GET home page. */
 router.get('/index.html', function(req, res, next) {
     res.render('taoquanzhong/index.html', { type: 'index'});
@@ -131,7 +142,7 @@ router.get('/taoka_weight.json', function (req, res, next) {
     // res.json(taoka_data); // 直接返回json格式数据
 });
 
-// 买号绑定
+// 获取买号绑定二维码
 router.get('/get_bind_qrcode.json', function (req, res, next) {
     // promise调用第三方接口查数据
     var taoka_data = {};
@@ -143,6 +154,21 @@ router.get('/get_bind_qrcode.json', function (req, res, next) {
     })
     .catch(function (err) {
         console.log('error-get_bind_qrcode')
+    });
+});
+
+// 买号绑定二维码状态
+router.get('/check_bind.json', function (req, res, next) {
+    // promise调用第三方接口查数据
+    var taoka_data = {};
+
+    rp(req.query.url)
+    .then(function (htmlString) {
+        taoka_data = JSON.parse(htmlString); // JSON.parse将字符串序列化为object，JSON.stringify(obj)将对象转为js字符串
+        res.json(taoka_data);
+    })
+    .catch(function (err) {
+        console.log('error-check_bind')
     });
 });
 

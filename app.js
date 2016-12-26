@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 跨域资源共享
 // app.use(cors()); // 已卸载
 
-app.use(function(req,res,next){ 
+app.use(function (req, res, next){ 
     // console.log(req.session.user);
     res.locals.user = req.session.user;   // 从session 获取 user对象
     res.locals.localhost = req.headers['host'];   // 获取当前访问页面的host（域名）
@@ -58,6 +58,15 @@ app.use(function(req,res,next){
     }
     next();  //中间件传递
 });
+
+// 检查用户是否登录中间件，所有需要登录权限的页面都使用此中间件
+function checkLogin (req, res, next) {
+  if (req.session.user) {
+    next();//检验到用户已登入，转移权限阁下一个路由
+  } else {
+    res.redirect('/user/login.html');//否则，页面重定位，不执行下面路由
+  }
+} 
 
 app.use('/', index);
 // 由debugeditor定义的index.js寻址，这里默认指定views下面的/debugeditor所有路径

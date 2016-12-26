@@ -22,6 +22,10 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 main.getBindQrcode();
             });
 
+            // 关闭定时发送的check_bind请求
+            $('.js-close-check').click(function(){
+                clearTimeout(main.timer);
+            });
         },
         query: function(page){
             //获取params
@@ -75,13 +79,44 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 data: params,
                 success: function (res) {
                     if(res.status === 0){
-                        $('#img_bind_account').attr('src', res.url)
+                        $('#img_bind_account').attr('src', res.url);
+                        function send(){
+                            main.timer = setTimeout(function(){
+                                main.checkBind(res.lgToken);
+                                send();
+                            }, 2000);
+                        }
+                        send();
                     }else{
-                        alert('getBindQrcode error')
+                        alert('getBindQrcode error');
                     }
                 },
                 error: function () {
                     alert('get_bind_qrcode请求有误');
+                }
+            });
+        },
+        checkBind: function(params){
+            var data = {};
+            data['url'] = 'http://www.taoka123.com/index/check_bind.html?lgToken=' + params + '&platform=tqz';
+
+            $.ajax({
+                type: 'get',
+                contentType: 'application/json',
+                url: '/taoquanzhong/check_bind.json',
+                // async: false, //选择同步，不然还没请求完就回填了
+                dataType: 'json',
+                data: data,
+                success: function (res) {
+                    if(res.status === 0){
+                        clearTimeout(main.timer);
+                    }else{
+                        console.log('check_bind请求中，得不到正确返回就一直请求，直到关闭为止');
+                    }
+                },
+                error: function () {
+                    alert('check_bind请求有误');
+                    clearTimeout(main.timer);
                 }
             });
         }
