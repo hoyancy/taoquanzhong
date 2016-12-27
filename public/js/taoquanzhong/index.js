@@ -63,11 +63,12 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                         var html = template("tpl_list", {list: data.result});
                         $("#table_list").html(html);
                     }else{
+                        alert('该请求有正确响应，但是请求不到数据');
                         console.log(data);
                     }
                 },
                 error: function () {
-                    alert('taoka_weight请求有误');
+                    alert('taoka_weight请求数据未有正确响应');
                 }
             });
         },

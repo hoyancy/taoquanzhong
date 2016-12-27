@@ -25,8 +25,8 @@
     <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<div id="table_list">
-                <div class="text-center">
+            <div class="text-center">
+                <div id="table_list">
                     <img src="/img/like.jpg">
                 </div>                
             </div>
@@ -41,7 +41,7 @@
 
 <!--渲染表单-->
 <script id="tpl_list" type="text/template">
-    <p id="msg" class="text-center">共找到 {{list.length}} 个宝贝</p>
+    <p id="msg" class="text-center">共找到 {{ list ? list.length : ''}} 个宝贝</p>
     {{ each list }}
     <div class="col-md-6 col-sm-6 col-lg-3">
         <a class="thumbnail" href="http://item.taobao.com/item.htm?id={{ $value.id }}" target="_blank"><img src={{ $value.pic }} alt="">
