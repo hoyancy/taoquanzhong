@@ -82,16 +82,17 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="modal fade" id="modal_bind_href" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
+				<div class="modal-dialog" style="width:360px;">
+					<div class="modal-content text-center">
 						<div class="modal-header">
 							 <button type="button" class="close js-close-check" data-dismiss="modal" aria-hidden="true">×</button>
 							<h4 class="modal-title" id="myModalLabel">
 								买号绑定
 							</h4>
 						</div>
-						<div class="modal-body">
-							<p>请使用 <b>手机淘宝</b> 扫描下面的二维码</p>
+						<div class="modal-body center">
+							<p id="p_bind_tips">请使用 <b>手机淘宝</b> 扫描下面的二维码</p>
+                            <div id="div_bind_account" class="text-center">二维码加载中...</div>
                             <img id="img_bind_account" src="">
 						</div>
 						<div class="modal-footer">

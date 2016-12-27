@@ -47,7 +47,6 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                     var url = 'http://www.taoka123.com/api/tags?' + params;
                     break;
             }
-            console.log(params);
 
             $.ajax({
                 type: 'get',
@@ -57,9 +56,12 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 dataType: 'json',
                 data: url,
                 success: function (data) {
-                    var html = template("tpl_list", {list: data.result});
-                    $("#table_list").html(html);
-                    console.log(data.result);
+                    if(data.status === 0){
+                        var html = template("tpl_list", {list: data.result});
+                        $("#table_list").html(html);
+                    }else{
+                        console.log(data);
+                    }
                 },
                 error: function () {
                     alert('taoka_weight请求有误');
@@ -79,12 +81,13 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 data: params,
                 success: function (res) {
                     if(res.status === 0){
+                        $('#div_bind_account').attr('class', 'hide');
                         $('#img_bind_account').attr('src', res.url);
                         function send(){
                             main.timer = setTimeout(function(){
                                 main.checkBind(res.lgToken);
                                 send();
-                            }, 2000);
+                            }, 1500);
                         }
                         send();
                     }else{
@@ -109,6 +112,7 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 data: data,
                 success: function (res) {
                     if(res.status === 0){
+                        $('#p_bind_tips').html('绑定成功！');
                         clearTimeout(main.timer);
                     }else{
                         console.log('check_bind请求中，得不到正确返回就一直请求，直到关闭为止');

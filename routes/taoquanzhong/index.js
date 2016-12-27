@@ -66,6 +66,7 @@ router.get('/taoka_weight.json', function (req, res, next) {
     rp(url)
     .then(function (htmlString) {
         taoka_data = JSON.parse(htmlString); // JSON.parse将字符串序列化为object，JSON.stringify(obj)将对象转为js字符串
+        console.log(taoka_data);
         res.json(taoka_data);
     })
     .catch(function (err) {
