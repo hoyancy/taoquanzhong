@@ -18,7 +18,10 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 $('.qq_iframe').attr('src', qq_src);
             });
 
+            // 买号绑定
             $('#bind_account').click(function(){
+                $('#img_bind_account').attr('class', 'hide');
+                $('#div_bind_account').removeClass('hide');
                 main.getBindQrcode();
             });
 
@@ -82,6 +85,7 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 success: function (res) {
                     if(res.status === 0){
                         $('#div_bind_account').attr('class', 'hide');
+                        $('#img_bind_account').removeClass('hide');
                         $('#img_bind_account').attr('src', res.url);
                         function send(){
                             main.timer = setTimeout(function(){
@@ -119,8 +123,8 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                     }
                 },
                 error: function () {
-                    alert('check_bind请求有误');
                     clearTimeout(main.timer);
+                    alert('check_bind请求有误');
                 }
             });
         }
