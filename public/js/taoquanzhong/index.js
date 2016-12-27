@@ -124,7 +124,7 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 },
                 error: function () {
                     clearTimeout(main.timer);
-                    alert('check_bind请求有误');
+                    console.log('check_bind请求有误');
                 }
             });
         }
