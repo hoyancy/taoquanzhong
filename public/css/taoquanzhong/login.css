@@ -18,7 +18,7 @@ body{
     background-size: cover;
 }
 a{
-    color:#27A9E3;
+    color:#C40000;
     text-decoration:none;
     cursor:pointer;
 }
@@ -44,7 +44,7 @@ a.logo{
 .message {
     margin: 10px 0 0 -58px;
     padding: 18px 10px 18px 60px;
-    background: #27A9E3;
+    background: #C40000;
     position: relative;
     color: #fff;
     font-size: 16px;
@@ -75,7 +75,7 @@ input[type=text]:focus,
 input[type=file]:focus,
 input[type=password]:focus,
 input[type=email]:focus, select:focus {
-    border: 1px solid #27A9E3;
+    border: 1px solid #C40000;
 }
 
 
@@ -92,7 +92,7 @@ input[type=button]{
     vertical-align: middle;
     cursor: pointer;
     color: #ffffff;
-    background-color: #27A9E3;
+    background-color: #C40000;
     border-radius: 3px;
     border: none;
     -webkit-appearance: none;
