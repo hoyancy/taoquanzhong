@@ -1,52 +1,59 @@
 <header>
+
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
-      <div id="nav_centent">
-        <div class="">
-             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/">Taoquanzhong</a>
-        </div>
-        <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <% if(!user){ %>
-                <li>
-                     <a href="/user/login.html" style="color: #72c9d1">登录</a>
-                </li>
-                <li>
-                     <a href="/user/register.html" style="color: #72c9d1">免费注册</a>
-                </li>
-                <% }else{ %>
-                <li>
-                     <a href="/user/logout" style="color: #72c9d1">您好<%= user[0].account%>, 退出</a>
-                </li>
-                <li>
-                    <a id="modal-341520" href="#modal-container-341520" style="color: #72c9d1" role="button" class="btn" data-toggle="modal">邀请注册链接</a>
-                </li>
-                <% } %>
-                <li>
-                     <a id="modal_bind_account" href="#modal_bind_href" style="color: #72c9d1" role="button" class="btn" data-toggle="modal"><span id="bind_account">买号绑定</span></a>
-                </li>
-                <li>
-                     <a href="/taoquanzhong/shop.html" style="color: #72c9d1">购买月卡</a>
-                </li>
-            </ul>
-        </div>
-        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a class="qq_chat"  style="color: #72c9d1" href="javascript:;" title="点击客服QQ进行聊天或者添加好友">
-                        <img src="/img/qq.png" height="20">&nbsp;客服QQ：517221264
-                    </a>
-                    <iframe style="display:none;" class="qq_iframe" src=""></iframe>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" style="border-color: #72c9d1" id="put_search" placeholder="站内搜索"/>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div id="nav_centent">
+                    <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/">嗨，欢迎来淘权重</a>
+                            </li>
+                            <% if(!user){ %>
+                            <li>
+                                <a href="/user/login.html">请登录</a>
+                            </li>
+                            <li>
+                                <a href="/user/register.html">免费注册</a>
+                            </li>
+                            <% }else{ %>
+                            <li>
+                                <a href="/user/logout">您好<%= user[0].account%>, 退出</a>
+                            </li>
+                            <li>
+                                <a id="modal-341520" href="#modal-container-341520" role="button" class="btn" data-toggle="modal">邀请注册链接</a>
+                            </li>
+                            <% } %>
+                            <li>
+                                <a id="modal_bind_account" href="#modal_bind_href" role="button" data-toggle="modal"><span id="bind_account">买号绑定</span></a>
+                            </li>
+                            <li>
+                                <a href="/taoquanzhong/shop.html">购买月卡</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="qq_chat" href="javascript:;" title="点击客服QQ进行聊天或者添加好友">
+                                    <img src="/img/qq.png" height="16" style="padding-bottom: 2px;">&nbsp;客服QQ：517221264
+                                </a>
+                                <iframe style="display:none;" class="qq_iframe" src=""></iframe>
+                            </li>
+                            <li>
+                                <a href="javascript:alert('暂未开放')">
+                                    个人中心
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default" id="btn_search"><span class="glyphicon glyphicon-search"></span></button>
-            </form>
+            </div>
         </div>
-      </div>
+    </div>
     </nav>
+
 </header>
 <% if(user){ %>
 <div class="container">

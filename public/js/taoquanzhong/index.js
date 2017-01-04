@@ -22,6 +22,8 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
             $('#bind_account').click(function(){
                 $('#img_bind_account').attr('class', 'hide');
                 $('#div_bind_account').removeClass('hide');
+                // 模态框点击空白不关闭
+                $('#modal_bind_href').modal({backdrop: 'static', keyboard: false});
                 main.getBindQrcode();
             });
 
