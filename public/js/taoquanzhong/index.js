@@ -32,22 +32,25 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
         },
         query: function(page){
             //获取params
-            var params = $('#form_search').serialize();
+            var params = $('#form_search').serializeObject();
             var action_type = $('#action_type').val();
             console.log(action_type);
-            var url = '';
+            params['url'] = {};
+            var data = {};
+            data['params'] = params;
+            data['url'] = {};
             switch(action_type){
                 case 'weight':
-                    var url = 'http://www.taoka123.com/api/taoka_weight?' + params;
+                    data['url'] = 'http://www.taoka123.com/api/taoka_weight';
                     break;
                 case 'need':
-                    var url = 'http://www.taoka123.com/api/taoka_need?' + params;
+                    data['url'] = 'http://www.taoka123.com/api/taoka_need';
                     break;
                 case 'like':
-                    var url = 'http://www.taoka123.com/api/like?' + params;
+                    data['url'] = 'http://www.taoka123.com/api/like';
                     break;
                 case 'tag':
-                    var url = 'http://www.taoka123.com/api/tags?' + params;
+                    data['url'] = 'http://www.taoka123.com/api/tags';
                     break;
             }
 
@@ -55,9 +58,8 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 type: 'get',
                 contentType: 'application/json',
                 url: '/taoquanzhong/taoka_weight.json',
-                // async: false, //选择同步，不然还没请求完就回填了
                 dataType: 'json',
-                data: url,
+                data: data,
                 success: function (data) {
                     if(data.status === 0){
                         var html = template("tpl_list", {list: data.result});
@@ -80,7 +82,6 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 type: 'get',
                 contentType: 'application/json',
                 url: '/taoquanzhong/get_bind_qrcode.json',
-                // async: false, //选择同步，不然还没请求完就回填了
                 dataType: 'json',
                 data: params,
                 success: function (res) {
@@ -112,7 +113,6 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
                 type: 'get',
                 contentType: 'application/json',
                 url: '/taoquanzhong/check_bind.json',
-                // async: false, //选择同步，不然还没请求完就回填了
                 dataType: 'json',
                 data: data,
                 success: function (res) {
@@ -133,3 +133,18 @@ seajs.use(["/config/debugeditor/modules/template/3.1.0/template"], function(temp
 
     main.init();
 });
+
+// 序列化表单
+jQuery.prototype.serializeObject = function(){  
+    var a, o, h, i, e;  
+    a = this.serializeArray();  
+    o = {};  
+    h = o.hasOwnProperty;  
+    for(i = 0; i<a.length; i++){  
+        e = a[i];  
+        if(!h.call(o,e.name)){  
+            o[e.name]=e.value;  
+        }  
+    }  
+    return o;  
+};  

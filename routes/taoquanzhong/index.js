@@ -59,11 +59,23 @@ router.get("/recommend_num.json",function(req,res,next){    // ajax获取推荐�
 // 查权重
 router.get('/taoka_weight.json', function (req, res, next) {
 
+    // var url = querystring.unescape(querystring.stringify(req.query)); // 传入url string时将req.query序列化为:后并解码为=，现在传入object已废弃使用
+
     // promise调用第三方接口查数据
     var taoka_data = {};
-    var url = querystring.unescape(querystring.stringify(req.query)); // 将req.query序列化后并解码
+    var url = req.query.url; // 第三方url
+    var params = req.query.params; // url携带的参数
 
-    rp(url)
+    // 使用option的方式传递params就不怕携带中文了
+    var options = {
+        uri: url,
+        qs: params,
+        headers: {
+            'User-Agent': 'Request-Promise',
+        }
+    };
+
+    rp(options)
     .then(function (htmlString) {
         taoka_data = JSON.parse(htmlString); // JSON.parse将字符串序列化为object，JSON.stringify(obj)将对象转为js字符串
         console.log(taoka_data);
@@ -73,6 +85,11 @@ router.get('/taoka_weight.json', function (req, res, next) {
         console.log('error-taoka_weight')
     });
 
+    // request('http://www.taoka123.com/api/taoka_weight?account=笑而不语55&api_key=30f387b84ebaadf8efe518e00f1583a6bak', function (error, response, body) {
+    //     // console.log(response.body);
+    //     taoka_data = response.body;
+    //     console.log(taoka_data);
+    // });
 
     // request('http://www.taoka123.com/api/taoka_weight?account=929392796lzy&api_key=30f387b84ebaadf8efe518e00f1583a6bak', function (error, response, body) {
     //     // console.log(response.body);
